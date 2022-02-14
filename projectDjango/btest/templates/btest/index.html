@@ -1,20 +1,15 @@
-<!DOcTYPE html>
-<html lang="ru">
-<head>
-	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-	{% load bootstrap5 %}
-	{% bootstrap_javascript %}
-	{% bootstrap_css %}
-	<title>Главная - Доска объявлений</title>
-</head>
-<body>
-	<h1>Объявления</h1>
+{% extends 'btest/base.html' %}
+
+{% block content %}
+<ul class="list-articles">
 	{% for bb in bbs %}
-	<div>
-		<h2>{{ bb.title }}</h2>
-		<p>{{ bb.content }}</p>
-		<p>{{ bb.published|date:"d.m.Y. H:i:s"}}</p>
-	</div>
+		<li><h2>{{bb.title}}</h2>
+	{% autoescape on %}
+	{{bb.content|linebreaks|truncatewords:50}}
+	{% endautoescape %}
+		<div class="clear"></div>
+		<p class="link-read-post"><a href="#">Купить</a></p>
+		</li>
 	{% endfor %}
-</body>
-</html>
+</ul>
+{% endblock%}

@@ -4,5 +4,6 @@ from btest import views
 
 urlpatterns = [
 	path('', views.index),
-	path ('admin/', admin.site.urls),
+	path('', views.about),
+	path ('admin/', admin.site.urls)
 ]
